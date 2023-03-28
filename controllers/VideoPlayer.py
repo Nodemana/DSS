@@ -14,7 +14,7 @@ class VideoPlayer(QMainWindow):
         self.setWindowIcon(QIcon('icon.png'))
         self.setGeometry(100, 100, 800, 600)
 
-        self.playlist_file = "../files/playlist.txt"
+        self.playlist_file = "files/playlist.txt"
         self.load_playlist(self.playlist_file)
 
         self.show()
@@ -22,7 +22,7 @@ class VideoPlayer(QMainWindow):
     def load_playlist(self, playlist_file):
         if os.path.exists(playlist_file):
             with open(playlist_file, 'r') as file:
-                playlist_paths = [os.path.join('../files', line.strip()) for line in file.readlines()]
+                playlist_paths = [os.path.join('files', line.strip()) for line in file.readlines()]
 
             screen = QApplication.desktop().screenGeometry()
             width = screen.width()
@@ -43,7 +43,7 @@ class VideoPlayer(QMainWindow):
 
             self.play_next_video()
         else:
-            self.label.setText('Playlist file not found')
+            print("Playlist not found")
 
     def video_end_callback(self, event):
         self.play_next_video()
@@ -59,8 +59,7 @@ class VideoPlayer(QMainWindow):
             self.player.set_fullscreen(True)
             current_media = self.media_list_player.get_media_player().get_media()
 
-    def run_video_player():
-        app = QApplication(sys.argv)
-        window = VideoPlayer()
-        sys.exit(app.exec_())
-    
+def run_video_player():
+    app = QApplication(sys.argv)
+    window = VideoPlayer()
+    sys.exit(app.exec_())

@@ -78,7 +78,7 @@ class HomeWindow(QWidget):
         self.play_button.setText("play")
         self.play_button.setFont(QFont("Arial", 12))
         self.play_button.move(50, 300)
-        self.delete_button.clicked.connect(self.play_button_press)
+        self.play_button.clicked.connect(self.play_button_press)
 
         # Create fetch button
         self.fetch_button = QPushButton(self)

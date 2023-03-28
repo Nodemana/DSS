@@ -12,7 +12,8 @@ def set_file_modification_time(filename, mtime):
     os.utime(filename, times=(atime, mtime.timestamp()))
 
 def ftp_connect():
-    ftp = ftplib.FTP('10.9.8.100')
+    #ftp = ftplib.FTP('10.9.8.100')
+    ftp = ftplib.FTP('10.9.8.4')
     ftp.login(os.getenv('FTPUSERNAME'), os.getenv('FTPPASSWORD'))
         #print("Connected and Authenticated")
     return ftp
